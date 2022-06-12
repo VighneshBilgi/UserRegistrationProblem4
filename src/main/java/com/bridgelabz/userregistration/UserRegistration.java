@@ -64,6 +64,24 @@ public class UserRegistration {
         }
     }
 
+    public void passwordRule1(String password){
+
+        String PasswordPattern="[a-zA-Z0-9~!@#$]{8,}";
+
+        Pattern pattern4=Pattern.compile(PasswordPattern);
+        Matcher matcher4=pattern4.matcher(password);
+        Boolean result4=matcher4.matches();
+
+        if(result4==true){
+            System.out.println("Password is valid");
+        }else{
+            System.out.println("Invaild, minimum 8 characters required.");
+        }
+
+    }
+
+
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -82,9 +100,13 @@ public class UserRegistration {
         String email = scanner.next();
         ur.email(email);
 
-        System.out.println("Enter your mobile number");
+        System.out.println("Enter your Mobile number:");
         String mobileNumber = scanner.next();
         ur.mobileNumber(mobileNumber);
+
+        System.out.println("Enter your Password:");
+        String password=scanner.next();
+        ur.passwordRule1(password);
 
     }
 }
