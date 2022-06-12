@@ -126,6 +126,24 @@ public class UserRegistration {
         }
     }
 
+    public void emailSampleValidation(String emailSample){
+
+        System.out.println("Checking for Email sample: "+emailSample);
+
+        String emailPattern= "[a-zA-Z0-9]+[.+-]{0,1}[0-9a-zA-Z]*@[a-z0-9]+[.][a-z]{2,4}[.a-z]{0,4}";
+
+        Pattern pattern = Pattern.compile(emailPattern);
+        Matcher matcher = pattern.matcher(emailSample);
+        Boolean result = matcher.matches();
+
+        if (result == true) {
+            System.out.println("Email is Valid.");
+        } else {
+            System.out.println("Email is not valid.");
+        }
+
+    }
+
     public void invalidPassword(){
         System.out.println("Invaild, minimum 8 characters required with atleast 1 of them being upper case and atleast 1 of them being a number and exactly 1 of them being a special character.");
     }
@@ -155,6 +173,18 @@ public class UserRegistration {
         System.out.println("Enter your Password:");
         String password=scanner.next();
         ur.passwordRule1(password);
+
+        System.out.println();
+        System.out.println("Email sample validation: ");
+        ur.emailSampleValidation("abc@yahoo.com");
+        ur.emailSampleValidation("abc-100@yahoo.com");
+        ur.emailSampleValidation("abc.100@yahoo.com");
+        ur.emailSampleValidation("abc111@abc.com");
+        ur.emailSampleValidation("abc-100@abc.net");
+        ur.emailSampleValidation("abc.100@abc.com.au");
+        ur.emailSampleValidation("abc@1.com");
+        ur.emailSampleValidation("abc@gmail.com.com");
+        ur.emailSampleValidation("abc+100@gmail.com");
 
     }
 }
