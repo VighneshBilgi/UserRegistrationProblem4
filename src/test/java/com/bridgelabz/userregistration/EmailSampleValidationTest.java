@@ -49,9 +49,9 @@ public class EmailSampleValidationTest {
     }
 
     @Test
-    public void givenEmailSample_WhenValid_ShouldReturnTrue() {
-        UserRegistration ur = new UserRegistration();
-        boolean result = ur.emailSampleValidation(this.emailSample);
+    public void givenEmailSample_WhenValid_ShouldReturnTrue() throws CustomException {
+        UserRegistrationException ure=new UserRegistrationException();
+        boolean result = ure.emailException(this.emailSample);
         assertEquals("Email",this.expectedResult,result);
     }
 }
