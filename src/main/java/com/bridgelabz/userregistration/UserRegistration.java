@@ -75,7 +75,7 @@ public class UserRegistration {
         if(result4==true){
             passwordRule2(password);
         }else{
-            System.out.println("Invaild, minimum 8 characters required with atleast 1 of them being upper case.");
+            invalidPassword();
         }
 
     }
@@ -89,11 +89,30 @@ public class UserRegistration {
         Boolean result4=matcher4.matches();
 
         if(result4==true){
-            System.out.println("Password is valid.");
+            passwordRule3(password);
         }else{
-            System.out.println("Invaild, minimum 8 characters required with atleast 1 of them being upper case.");
+            invalidPassword();
         }
 
+    }
+
+    public void passwordRule3(String password) {
+
+        String PasswordPattern = "^(?=.*[0-9])(?=.*[A-Z])[a-zA-Z0-9@#$%^&+]{8,}$";
+
+        Pattern pattern4 = Pattern.compile(PasswordPattern);
+        Matcher matcher4 = pattern4.matcher(password);
+        Boolean result4 = matcher4.matches();
+
+        if (result4 == true) {
+            System.out.println("Password is valid");
+        } else {
+            invalidPassword();
+        }
+    }
+
+    public void invalidPassword(){
+        System.out.println("Invaild, minimum 8 characters required with atleast 1 of them being upper case and atleast 1 of them being a number.");
     }
 
     public static void main(String[] args) {
