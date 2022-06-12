@@ -58,9 +58,9 @@ public class UserRegistration {
         Boolean result3 = matcher3.matches();
 
         if (result3 == true) {
-            System.out.println("Mobile number is valid");
+            System.out.println("Mobile number is valid.");
         } else {
-            System.out.println("Mobile number is not valid");
+            System.out.println("Mobile number is not valid.");
         }
     }
 
@@ -73,14 +73,28 @@ public class UserRegistration {
         Boolean result4=matcher4.matches();
 
         if(result4==true){
-            System.out.println("Password is valid");
+            passwordRule2(password);
         }else{
-            System.out.println("Invaild, minimum 8 characters required.");
+            System.out.println("Invaild, minimum 8 characters required with atleast 1 of them being upper case.");
         }
 
     }
 
+    public void passwordRule2(String password){
 
+        String PasswordPattern="^(?=.*[A-Z])[a-zA-Z0-9@#$%^&+]{8,}";
+
+        Pattern pattern4=Pattern.compile(PasswordPattern);
+        Matcher matcher4=pattern4.matcher(password);
+        Boolean result4=matcher4.matches();
+
+        if(result4==true){
+            System.out.println("Password is valid.");
+        }else{
+            System.out.println("Invaild, minimum 8 characters required with atleast 1 of them being upper case.");
+        }
+
+    }
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
